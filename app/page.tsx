@@ -191,7 +191,7 @@ const valueProps = [
   {
     icon: Sparkles,
     title: "Curated Quality",
-    description: "Each piece is selected by our in-house design team.",
+    description: "selected peace",
   },
 ];
 
