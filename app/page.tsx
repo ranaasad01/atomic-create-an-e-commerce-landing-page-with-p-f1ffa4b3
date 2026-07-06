@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -200,8 +199,8 @@ const valueProps = [
 
 function StarRating({ rating, count }: { rating: number; count: number }) {
   return (
-    <div className="flex items-center gap-1.5">
-      <div className="flex items-center gap-0.5">
+    <div className="flex items-center gap-1.5" data-atomic-id="amgf7s">
+      <div className="flex items-center gap-0.5" data-atomic-id="a1iyj497">
         {[1, 2, 3, 4, 5].map((star) => (
           <Star
             key={star}
@@ -214,7 +213,7 @@ function StarRating({ rating, count }: { rating: number; count: number }) {
           />
         ))}
       </div>
-      <span className="text-xs text-slate-500">
+      <span className="text-xs text-slate-500" data-atomic-id="a136mujg">
         {rating.toFixed(1)} ({count})
       </span>
     </div>
@@ -238,16 +237,18 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
       className="group relative bg-white rounded-2xl overflow-hidden border border-black/5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.16)] transition-shadow duration-300"
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-slate-50">
+      <div
+        className="relative aspect-[4/3] overflow-hidden bg-slate-50"
+        data-atomic-id="a1l57wls">
         <img
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+          data-atomic-id="a15od71" />
         {product.badge && (
           <span
             className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${badgeColors[product.badge] ?? "bg-slate-100 text-slate-700"}`}
-          >
+            data-atomic-id="a1y6d8w">
             {product.badge}
           </span>
         )}
@@ -268,26 +269,33 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
           />
         </motion.button>
       </div>
-
       {/* Content */}
-      <div className="p-4">
-        <p className="text-xs text-indigo-600 font-medium mb-1">
+      <div className="p-4" data-atomic-id="a1l81kus">
+        <p
+          className="text-xs text-indigo-600 font-medium mb-1"
+          data-atomic-id="av4jkpw">
           {product.category}
         </p>
-        <h3 className="text-sm font-semibold text-slate-900 mb-1 tracking-tight">
+        <h3
+          className="text-sm font-semibold text-slate-900 mb-1 tracking-tight"
+          data-atomic-id="awqerdd">
           {product.name}
         </h3>
-        <p className="text-xs text-slate-500 mb-3 leading-relaxed">
+        <p
+          className="text-xs text-slate-500 mb-3 leading-relaxed"
+          data-atomic-id="av4jo2w">
           {product.description}
         </p>
         <StarRating rating={product.rating} count={product.reviews} />
-        <div className="flex items-center justify-between mt-3">
-          <div className="flex items-baseline gap-2">
-            <span className="text-base font-bold text-slate-900">
+        <div
+          className="flex items-center justify-between mt-3"
+          data-atomic-id="aev2q3j">
+          <div className="flex items-baseline gap-2" data-atomic-id="awqvvcy">
+            <span className="text-base font-bold text-slate-900" data-atomic-id="a1iv3qdw">
               ${product.price}
             </span>
             {product.originalPrice !== null && (
-              <span className="text-xs text-slate-400 line-through">
+              <span className="text-xs text-slate-400 line-through" data-atomic-id="a1sfxtvm">
                 ${product.originalPrice}
               </span>
             )}
@@ -318,19 +326,30 @@ export default function HomePage() {
       : products.filter((p) => p.category === activeCategory);
 
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-hidden" data-atomic-id="a8mzbt1">
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[92vh] flex items-center bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 pt-20">
+      <section
+        className="relative min-h-[92vh] flex items-center bg-gradient-to-br from-slate-50 via-white to-indigo-50/40 pt-20"
+        data-atomic-id="aqp6m0q">
         {/* Subtle mesh glow */}
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 overflow-hidden"
-        >
-          <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-indigo-100/50 blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-amber-50/60 blur-3xl" />
+          data-atomic-id="ad5pi99">
+          <div
+            className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-indigo-100/50 blur-3xl"
+            data-atomic-id="azx7nio" />
+          <div
+            className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-amber-50/60 blur-3xl"
+            data-atomic-id="azymhn6" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div
+          className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          data-atomic-id="ad74cdr"
+          style={{
+            color: "#ef4444"
+          }}>
           {/* Left copy */}
           <motion.div
             variants={staggerContainer}
@@ -341,7 +360,7 @@ export default function HomePage() {
               variants={fadeInUp}
               className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-indigo-600 mb-6"
             >
-              <span className="w-6 h-px bg-indigo-400" />
+              <span className="w-6 h-px bg-indigo-400" data-atomic-id="a1e50rl5" />
               {t("hero.eyebrow")}
             </motion.span>
 
@@ -350,8 +369,8 @@ export default function HomePage() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.05] text-balance mb-6"
             >
               {t("hero.headline1")}
-              <br />
-              <span className="text-indigo-600">{t("hero.headline2")}</span>
+              <br data-atomic-id="aqv4ken" />
+              <span className="text-indigo-600" data-atomic-id="a1r6thdb">{t("hero.headline2")}</span>
             </motion.h1>
 
             <motion.p
@@ -393,14 +412,21 @@ export default function HomePage() {
                 { value: "12k+", label: "Happy customers" },
                 { value: "4.9", label: "Average rating" },
                 { value: "200+", label: "Curated products" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="text-2xl font-bold text-slate-900 tracking-tight">
-                    {stat.value}
-                  </p>
-                  <p className="text-xs text-slate-500 mt-0.5">{stat.label}</p>
-                </div>
-              ))}
+              ].map((stat, __atomicIdx) => (<div
+                key={stat.label}
+                data-atomic-id="awxt7yu"
+                data-atomic-instance={__atomicIdx}>
+                <p
+                  className="text-2xl font-bold text-slate-900 tracking-tight"
+                  data-atomic-id="apxo3hi"
+                  data-atomic-instance={__atomicIdx}>
+                  {stat.value}
+                </p>
+                <p
+                  className="text-xs text-slate-500 mt-0.5"
+                  data-atomic-id="apxo560"
+                  data-atomic-instance={__atomicIdx}>{stat.label}</p>
+              </div>))}
             </motion.div>
           </motion.div>
 
@@ -411,37 +437,45 @@ export default function HomePage() {
             animate="visible"
             className="relative hidden lg:block"
           >
-            <div className="relative grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5">
+            <div className="relative grid grid-cols-2 gap-4" data-atomic-id="a1m3c5wb">
+              <div className="space-y-4" data-atomic-id="a1cyl73y">
+                <div
+                  className="rounded-2xl overflow-hidden aspect-[3/4] shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5"
+                  data-atomic-id="a14wjmwx">
                   <img
                     src="https://www.zevyjoy.com/wp-content/uploads/2019/09/Neutral-Touches-of-Fall-in-the-Family-Room-11.jpg"
                     alt="Curated home decor"
                     className="w-full h-full object-cover"
-                  />
+                    data-atomic-id="a186erry" />
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-square shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5">
+                <div
+                  className="rounded-2xl overflow-hidden aspect-square shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5"
+                  data-atomic-id="a14xyh1f">
                   <img
                     src="https://assets.bonappetit.com/photos/61ba2e81510874520d257b6c/16:9/w_2560%2Cc_limit/20211214%2520Wellness%2520Products%2520We%2520Loved%2520That%2520You%2520Loved%2520LEDE.jpg"
                     alt="Wellness products"
                     className="w-full h-full object-cover"
-                  />
+                    data-atomic-id="a1eyac4g" />
                 </div>
               </div>
-              <div className="space-y-4 pt-8">
-                <div className="rounded-2xl overflow-hidden aspect-square shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5">
+              <div className="space-y-4 pt-8" data-atomic-id="a1d0018g">
+                <div
+                  className="rounded-2xl overflow-hidden aspect-square shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5"
+                  data-atomic-id="a1bof79f">
                   <img
                     src="https://panaxmart.com/cdn/shop/articles/Jewelry-laydown-two.jpg?v=1695801014&width=1920"
                     alt="Accessories"
                     className="w-full h-full object-cover"
-                  />
+                    data-atomic-id="a1izfixs" />
                 </div>
-                <div className="rounded-2xl overflow-hidden aspect-[3/4] shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5">
+                <div
+                  className="rounded-2xl overflow-hidden aspect-[3/4] shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5"
+                  data-atomic-id="a1bpu1dx">
                   <img
                     src="http://www.apparelentrepreneurship.com/wp-content/uploads/2019/04/apparel_entrepreneurship_what_your_clothing_brand_needs_to_stay_relevant_2019.jpg"
                     alt="Apparel"
                     className="w-full h-full object-cover"
-                  />
+                    data-atomic-id="a1prb3aa" />
                 </div>
               </div>
             </div>
@@ -453,23 +487,26 @@ export default function HomePage() {
               transition={{ delay: 0.8, duration: 0.5, ease: "easeOut" }}
               className="absolute -left-8 top-1/2 -translate-y-1/2 bg-white rounded-2xl px-4 py-3 shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.14)] border border-black/5"
             >
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center">
+              <div className="flex items-center gap-2.5" data-atomic-id="a1qicbsy">
+                <div
+                  className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center"
+                  data-atomic-id="a1qil58l">
                   <Star size={14} className="fill-amber-500 text-amber-500" />
                 </div>
-                <div>
-                  <p className="text-xs font-bold text-slate-900">Top Rated</p>
-                  <p className="text-xs text-slate-500">4.9 / 5 stars</p>
+                <div data-atomic-id="a1qjzzd3">
+                  <p className="text-xs font-bold text-slate-900" data-atomic-id="aoceepj">Top Rated</p>
+                  <p className="text-xs text-slate-500" data-atomic-id="aocege1">4.9 / 5 stars</p>
                 </div>
               </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
-
       {/* ── Value Props ───────────────────────────────────────────────────── */}
-      <section className="bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section className="bg-white border-y border-slate-100" data-atomic-id="adx5am6">
+        <div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12"
+          data-atomic-id="aqo1str">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -477,32 +514,43 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-8"
           >
-            {valueProps.map((vp) => (
-              <motion.div
-                key={vp.title}
-                variants={fadeInUp}
-                className="flex flex-col sm:flex-row items-start sm:items-center gap-3"
-              >
-                <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center">
-                  <vp.icon size={18} className="text-indigo-600" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">
-                    {vp.title}
-                  </p>
-                  <p className="text-xs text-slate-500 mt-0.5 leading-relaxed">
-                    {vp.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+            {valueProps.map((vp, __atomicIdx) => (<motion.div
+              key={vp.title}
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-3"
+            >
+              <div
+                className="flex-shrink-0 w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center"
+                data-atomic-id="arqzdkz"
+                data-atomic-instance={__atomicIdx}>
+                <vp.icon size={18} className="text-indigo-600" />
+              </div>
+              <div data-atomic-id="arse7ph" data-atomic-instance={__atomicIdx}>
+                <p
+                  className="text-sm font-semibold text-slate-900"
+                  data-atomic-id="a1lmdwtx"
+                  data-atomic-instance={__atomicIdx}>
+                  {vp.title}
+                </p>
+                <p
+                  className="text-xs text-slate-500 mt-0.5 leading-relaxed"
+                  data-atomic-id="a1lmdyif"
+                  data-atomic-instance={__atomicIdx}>
+                  {vp.description}
+                </p>
+              </div>
+            </motion.div>))}
           </motion.div>
         </div>
       </section>
-
       {/* ── Collections ───────────────────────────────────────────────────── */}
-      <section id="collections" className="py-24 md:py-32 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        id="collections"
+        className="py-24 md:py-32 bg-slate-50"
+        data-atomic-id="a9npdt5">
+        <div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          data-atomic-id="a82ai9m">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -510,15 +558,21 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <motion.div variants={fadeInUp} className="mb-12">
-              <span className="text-xs font-semibold tracking-widest uppercase text-indigo-600">
+              <span
+                className="text-xs font-semibold tracking-widest uppercase text-indigo-600"
+                data-atomic-id="a1ae0xde">
                 {t("collections.eyebrow")}
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance">
+              <h2
+                className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance"
+                data-atomic-id="a8ghg7w">
                 {t("collections.heading")}
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              data-atomic-id="a1er5ogy">
               {collections.map((col, i) => (
                 <motion.a
                   key={col.id}
@@ -528,22 +582,44 @@ export default function HomePage() {
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className={`group relative rounded-2xl overflow-hidden border border-black/5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.16)] transition-shadow duration-300 ${i === 1 ? "md:row-span-1 md:scale-[1.02]" : ""}`}
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden">
+                  <div
+                    className="relative aspect-[4/3] overflow-hidden"
+                    data-atomic-id="ajkk51v"
+                    data-atomic-instance={i}>
                     <img
                       src={col.image}
                       alt={col.title}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-xs text-white/70 mb-1">{col.subtitle}</p>
-                      <h3 className="text-xl font-bold text-white tracking-tight">
+                      data-atomic-id="a1cudynk"
+                      data-atomic-instance={i} />
+                    <div
+                      className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent"
+                      data-atomic-id="a1cvsohk"
+                      data-atomic-instance={i} />
+                    <div
+                      className="absolute bottom-0 left-0 right-0 p-6"
+                      data-atomic-id="a1cx7im2"
+                      data-atomic-instance={i}>
+                      <p
+                        className="text-xs text-white/70 mb-1"
+                        data-atomic-id="a14yruy"
+                        data-atomic-instance={i}>{col.subtitle}</p>
+                      <h3
+                        className="text-xl font-bold text-white tracking-tight"
+                        data-atomic-id="a11jx2nr"
+                        data-atomic-instance={i}>
                         {col.title}
                       </h3>
-                      <p className="text-xs text-white/60 mt-1">
+                      <p
+                        className="text-xs text-white/60 mt-1"
+                        data-atomic-id="a14yv7y"
+                        data-atomic-instance={i}>
                         {col.count} products
                       </p>
-                      <span className="inline-flex items-center gap-1 mt-3 text-xs font-semibold text-white/90 group-hover:gap-2 transition-all duration-200">
+                      <span
+                        className="inline-flex items-center gap-1 mt-3 text-xs font-semibold text-white/90 group-hover:gap-2 transition-all duration-200"
+                        data-atomic-id="a1jd73pu"
+                        data-atomic-instance={i}>
                         Explore <ArrowRight size={12} />
                       </span>
                     </div>
@@ -554,10 +630,14 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       {/* ── Products ──────────────────────────────────────────────────────── */}
-      <section id="products" className="py-24 md:py-32 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        id="products"
+        className="py-24 md:py-32 bg-white"
+        data-atomic-id="a1vws4dp">
+        <div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          data-atomic-id="alm1mym">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -568,18 +648,22 @@ export default function HomePage() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10"
             >
-              <div>
-                <span className="text-xs font-semibold tracking-widest uppercase text-indigo-600">
+              <div data-atomic-id="a1xf41uv">
+                <span
+                  className="text-xs font-semibold tracking-widest uppercase text-indigo-600"
+                  data-atomic-id="a1dayh89">
                   {t("products.eyebrow")}
                 </span>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance">
+                <h2
+                  className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance"
+                  data-atomic-id="alb5un7">
                   {t("products.heading")}
                 </h2>
               </div>
               <a
                 href="#collections"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-indigo-600 hover:text-indigo-700 transition-colors duration-200 whitespace-nowrap"
-              >
+                data-atomic-id="ai2do87">
                 View all <ChevronRight size={16} />
               </a>
             </motion.div>
@@ -621,11 +705,17 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       {/* ── About / Brand Story ───────────────────────────────────────────── */}
-      <section id="about" className="py-24 md:py-32 bg-slate-900 text-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section
+        id="about"
+        className="py-24 md:py-32 bg-slate-900 text-white overflow-hidden"
+        data-atomic-id="a1j4qsz5">
+        <div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          data-atomic-id="az5srnm">
+          <div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+            data-atomic-id="acyt3wl">
             {/* Image side */}
             <motion.div
               variants={slideInLeft}
@@ -634,12 +724,14 @@ export default function HomePage() {
               viewport={{ once: true, margin: "-80px" }}
               className="relative"
             >
-              <div className="rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_4px_8px_rgba(0,0,0,0.3),0_24px_60px_-16px_rgba(0,0,0,0.5)] border border-white/10">
+              <div
+                className="rounded-2xl overflow-hidden aspect-[4/5] shadow-[0_4px_8px_rgba(0,0,0,0.3),0_24px_60px_-16px_rgba(0,0,0,0.5)] border border-white/10"
+                data-atomic-id="a8lqsrx">
                 <img
                   src="https://blooloop.com/media-library/atelier-des-lumieres-japan-waves.jpg?id=56454334&width=1200&height=600&coordinates=0%2C138%2C0%2C139"
                   alt="Lumière atelier"
                   className="w-full h-full object-cover"
-                />
+                  data-atomic-id="a4rr1u2" />
               </div>
               {/* Floating stat card */}
               <motion.div
@@ -649,8 +741,8 @@ export default function HomePage() {
                 transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
                 className="absolute -right-6 bottom-12 bg-white/10 backdrop-blur-xl rounded-2xl px-5 py-4 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
               >
-                <p className="text-3xl font-bold text-white">2016</p>
-                <p className="text-xs text-white/60 mt-0.5">Founded in Paris</p>
+                <p className="text-3xl font-bold text-white" data-atomic-id="a142cujl">2016</p>
+                <p className="text-xs text-white/60 mt-0.5" data-atomic-id="a142cw83">Founded in Paris</p>
               </motion.div>
             </motion.div>
 
@@ -665,7 +757,7 @@ export default function HomePage() {
                 variants={fadeInUp}
                 className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-indigo-400 mb-6"
               >
-                <span className="w-6 h-px bg-indigo-400" />
+                <span className="w-6 h-px bg-indigo-400" data-atomic-id="aia1lab" />
                 {t("about.eyebrow")}
               </motion.span>
 
@@ -698,21 +790,28 @@ export default function HomePage() {
                   { value: "48", label: "Artisan partners" },
                   { value: "22", label: "Countries served" },
                   { value: "98%", label: "Satisfaction rate" },
-                ].map((s) => (
-                  <motion.div key={s.label} variants={fadeInUp}>
-                    <p className="text-3xl font-bold text-white">{s.value}</p>
-                    <p className="text-xs text-slate-500 mt-1">{s.label}</p>
-                  </motion.div>
-                ))}
+                ].map((s, __atomicIdx) => (<motion.div key={s.label} variants={fadeInUp}>
+                  <p
+                    className="text-3xl font-bold text-white"
+                    data-atomic-id="abhj9kn"
+                    data-atomic-instance={__atomicIdx}>{s.value}</p>
+                  <p
+                    className="text-xs text-slate-500 mt-1"
+                    data-atomic-id="abhjb95"
+                    data-atomic-instance={__atomicIdx}>{s.label}</p>
+                </motion.div>))}
               </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
-
       {/* ── Testimonials ─────────────────────────────────────────────────── */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-indigo-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section
+        className="py-24 md:py-32 bg-gradient-to-b from-white to-indigo-50/30"
+        data-atomic-id="a4e1xzg">
+        <div
+          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+          data-atomic-id="a1jl0ud9">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -720,15 +819,21 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
           >
             <motion.div variants={fadeInUp} className="text-center mb-14">
-              <span className="text-xs font-semibold tracking-widest uppercase text-indigo-600">
+              <span
+                className="text-xs font-semibold tracking-widest uppercase text-indigo-600"
+                data-atomic-id="a19h8ygl">
                 {t("testimonials.eyebrow")}
               </span>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance">
+              <h2
+                className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight mt-2 text-balance"
+                data-atomic-id="a1ikky73">
                 {t("testimonials.heading")}
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div
+              className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              data-atomic-id="a1fv9grp">
               {testimonials.map((review, i) => (
                 <motion.div
                   key={review.id}
@@ -737,7 +842,10 @@ export default function HomePage() {
                   transition={{ duration: 0.25, ease: "easeOut" }}
                   className={`bg-white rounded-2xl p-6 border border-black/5 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_8px_24px_-8px_rgba(0,0,0,0.10)] hover:shadow-[0_4px_8px_rgba(0,0,0,0.06),0_16px_40px_-12px_rgba(0,0,0,0.16)] transition-shadow duration-300 ${i === 1 ? "md:scale-[1.03]" : ""}`}
                 >
-                  <div className="flex items-center gap-0.5 mb-4">
+                  <div
+                    className="flex items-center gap-0.5 mb-4"
+                    data-atomic-id="ayakvo6"
+                    data-atomic-instance={i}>
                     {[1, 2, 3, 4, 5].map((s) => (
                       <Star
                         key={s}
@@ -746,24 +854,43 @@ export default function HomePage() {
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-slate-700 leading-relaxed mb-5 text-pretty">
+                  <p
+                    className="text-sm text-slate-700 leading-relaxed mb-5 text-pretty"
+                    data-atomic-id="a156sylh"
+                    data-atomic-instance={i}>
                     &ldquo;{review.text}&rdquo;
                   </p>
-                  <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
-                    <div className="w-9 h-9 rounded-full overflow-hidden bg-slate-100 flex-shrink-0 border border-black/5">
+                  <div
+                    className="flex items-center gap-3 pt-4 border-t border-slate-100"
+                    data-atomic-id="aydejx6"
+                    data-atomic-instance={i}>
+                    <div
+                      className="w-9 h-9 rounded-full overflow-hidden bg-slate-100 flex-shrink-0 border border-black/5"
+                      data-atomic-id="a42zf4t"
+                      data-atomic-instance={i}>
                       <img
                         src={review.avatar}
                         alt={review.name}
                         className="w-full h-full object-cover"
-                      />
+                        data-atomic-id="a1429wl6"
+                        data-atomic-instance={i} />
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold text-slate-900">
+                    <div data-atomic-id="a44e99b" data-atomic-instance={i}>
+                      <p
+                        className="text-sm font-semibold text-slate-900"
+                        data-atomic-id="ameyftb"
+                        data-atomic-instance={i}>
                         {review.name}
                       </p>
-                      <p className="text-xs text-slate-500">{review.location}</p>
+                      <p
+                        className="text-xs text-slate-500"
+                        data-atomic-id="ameyhht"
+                        data-atomic-instance={i}>{review.location}</p>
                     </div>
-                    <span className="ml-auto text-xs text-indigo-600 font-medium">
+                    <span
+                      className="ml-auto text-xs text-indigo-600 font-medium"
+                      data-atomic-id="a1uavr1s"
+                      data-atomic-instance={i}>
                       {review.product}
                     </span>
                   </div>
@@ -773,16 +900,27 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
-
       {/* ── Newsletter / CTA ─────────────────────────────────────────────── */}
-      <section id="newsletter" className="py-24 md:py-32 bg-indigo-600 relative overflow-hidden">
+      <section
+        id="newsletter"
+        className="py-24 md:py-32 bg-indigo-600 relative overflow-hidden"
+        data-atomic-id="a1qn4ok0">
         {/* Background texture */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-indigo-800/40 blur-3xl" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          data-atomic-id="a1x66t6r">
+          <div
+            className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-white/5 blur-3xl"
+            data-atomic-id="a196a9ba" />
+          <div
+            className="absolute bottom-0 right-1/4 w-96 h-96 rounded-full bg-indigo-800/40 blur-3xl"
+            data-atomic-id="a197p3fs" />
         </div>
 
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div
+          className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+          data-atomic-id="a1x7lnb9">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
@@ -793,9 +931,9 @@ export default function HomePage() {
               variants={fadeInUp}
               className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-indigo-200 mb-6"
             >
-              <span className="w-6 h-px bg-indigo-300" />
+              <span className="w-6 h-px bg-indigo-300" data-atomic-id="aj4un7h" />
               {t("newsletter.eyebrow")}
-              <span className="w-6 h-px bg-indigo-300" />
+              <span className="w-6 h-px bg-indigo-300" data-atomic-id="alq1vgh" />
             </motion.span>
 
             <motion.h2
@@ -823,7 +961,7 @@ export default function HomePage() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t("newsletter.placeholder")}
                 className="flex-1 px-4 py-3 rounded-xl bg-white/15 backdrop-blur-sm border border-white/20 text-white placeholder-indigo-300 text-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:bg-white/20 transition-all duration-200"
-              />
+                data-atomic-id="ax6huwx" />
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.04 }}
