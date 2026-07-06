@@ -137,34 +137,63 @@ const collections = [
     title: "Wellness Essentials",
     subtitle: "Rituals for body and mind",
     count: 18,
-    image: "https://m.media-amazon.com/images/I/61sfyvxvkrL.jpg",
+    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80",
     accent: "from-green-50 to-emerald-100",
   },
 ];
 
-const trustBadges = [
-  { icon: Truck, label: "Free Shipping", sub: "On orders over $75" },
-  { icon: RefreshCw, label: "Easy Returns", sub: "30-day hassle-free" },
-  { icon: ShieldCheck, label: "Secure Checkout", sub: "256-bit SSL encryption" },
-  { icon: Sparkles, label: "Premium Quality", sub: "Curated with care" },
+const stats = [
+  { value: "10k+", label: "Happy Customers" },
+  { value: "500+", label: "Curated Products" },
+  { value: "2,4002323", label: "5-Star Reviews" },
+  { value: "48h", label: "Avg. Delivery" },
 ];
 
-// ─── Badge color helper ──────────────────────────────────────────────────────
-function badgeColor(badge: string) {
-  if (badge === "Sale") return "bg-rose-500 text-white";
-  if (badge === "New") return "bg-indigo-600 text-white";
-  if (badge === "Bestseller") return "bg-amber-400 text-slate-900";
-  return "bg-slate-700 text-white";
-}
+const trustFeatures = [
+  {
+    icon: Truck,
+    title: "Free Shipping",
+    description: "On all orders over $75",
+  },
+  {
+    icon: RefreshCw,
+    title: "Easy Returns",
+    description: "30-day hassle-free returns",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Secure Checkout",
+    description: "256-bit SSL encryption",
+  },
+  {
+    icon: Sparkles,
+    title: "Premium Quality",
+    description: "Curated for lasting value",
+  },
+];
 
-// ─── Product Card ────────────────────────────────────────────────────────────
-function ProductCard({ product }: { product: (typeof products)[0] }) {
+// ─── Badge Color Map ─────────────────────────────────────────────────────────
+const badgeStyles: Record<string, string> = {
+  Bestseller: "bg-amber-100 text-amber-700",
+  New: "bg-indigo-100 text-indigo-700",
+  Sale: "bg-rose-100 text-rose-600",
+};
+
+// ─── Product Card ─────────────────────────────────────────────────────────────
+function ProductCard({
+  product,
+  onAddToCart,
+}: {
+  product: (typeof products)[0];
+  onAddToCart: (id: number) => void;
+}) {
   const [wished, setWished] = useState(false);
   const [added, setAdded] = useState(false);
 
   const handleAdd = () => {
+    onAddToCart(product.id);
     setAdded(true);
-    setTimeout(() => setAdded(false), 1800);
+    setTimeout(() => setAdded(false), 1400);
   };
 
   return (
@@ -186,7 +215,9 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
         {/* Badge */}
         {product.badge && (
           <span
-            className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${badgeColor(product.badge)}`}
+            className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${
+              badgeStyles[product.badge] ?? "bg-slate-100 text-slate-600"
+            }`}
           >
             {product.badge}
           </span>
@@ -194,8 +225,8 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
         {/* Wishlist */}
         <button
           onClick={() => setWished((w) => !w)}
-          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:scale-110 active:scale-95"
-          aria-label="Wishlist"
+          className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/80 backdrop-blur-sm flex items-center justify-center shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
+          aria-label="Toggle wishlist"
         >
           <Heart
             size={15}
@@ -206,7 +237,7 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
 
       {/* Info */}
       <div className="p-4 flex flex-col flex-1">
-        <p className="text-xs text-indigo-600 font-medium mb-1">{product.category}</p>
+        <p className="text-xs text-indigo-500 font-medium mb-1">{product.category}</p>
         <h3 className="text-sm font-semibold text-slate-900 mb-1 leading-snug">
           {product.name}
         </h3>
@@ -215,23 +246,19 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
         </p>
 
         {/* Rating */}
-        <div className="flex items-center gap-1.5 mb-3">
-          <div className="flex items-center gap-0.5">
-            {Array.from({ length: 5 }).map((_, i) => (
-              <Star
-                key={i}
-                size={11}
-                className={
-                  i < Math.round(product.rating)
-                    ? "fill-amber-400 text-amber-400"
-                    : "text-slate-200 fill-slate-200"
-                }
-              />
-            ))}
-          </div>
-          <span className="text-xs text-slate-500">
-            {product.rating} ({product.reviews})
-          </span>
+        <div className="flex items-center gap-1 mb-3">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
+              key={i}
+              size={12}
+              className={
+                i < Math.round(product.rating)
+                  ? "fill-amber-400 text-amber-400"
+                  : "text-slate-200 fill-slate-200"
+              }
+            />
+          ))}
+          <span className="text-xs text-slate-400 ml-1">({product.reviews})</span>
         </div>
 
         {/* Price + CTA */}
@@ -252,7 +279,7 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
                 : "bg-indigo-600 hover:bg-indigo-700 text-white"
             }`}
           >
-            {added ? "Added!" : "Add to Cart"}
+            {added ? "Added ✓" : "Add to Cart"}
           </button>
         </div>
       </div>
@@ -260,10 +287,11 @@ function ProductCard({ product }: { product: (typeof products)[0] }) {
   );
 }
 
-// ─── Page ────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────────────────────────
 export default function HomePage() {
   const t = useTranslations();
   const [activeCategory, setActiveCategory] = useState<ProductCategory>("All");
+  const [cartCount, setCartCount] = useState(0);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
@@ -271,6 +299,10 @@ export default function HomePage() {
     activeCategory === "All"
       ? products
       : products.filter((p) => p.category === activeCategory);
+
+  const handleAddToCart = (id: number) => {
+    setCartCount((c) => c + 1);
+  };
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -283,15 +315,15 @@ export default function HomePage() {
   return (
     <main>
       {/* ── Hero ── */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-950">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900">
         {/* Background decoration */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-indigo-600/20 blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-purple-600/10 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-indigo-900/20 blur-3xl" />
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 grid lg:grid-cols-2 gap-16 items-center">
           {/* Left */}
           <motion.div
             variants={staggerContainer}
@@ -299,7 +331,7 @@ export default function HomePage() {
             animate="visible"
             className="text-center lg:text-left"
           >
-            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-indigo-600/20 border border-indigo-500/30 rounded-full px-4 py-1.5 mb-6">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/20 rounded-full px-4 py-1.5 mb-6">
               <Sparkles size={14} className="text-indigo-400" />
               <span className="text-indigo-300 text-xs font-medium tracking-wide">
                 New Collection — Summer 2025
@@ -308,7 +340,7 @@ export default function HomePage() {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.05] tracking-tight mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6"
             >
               {t("hero.headline")}
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
@@ -318,34 +350,29 @@ export default function HomePage() {
 
             <motion.p
               variants={fadeInUp}
-              className="text-slate-400 text-lg leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0"
+              className="text-slate-400 text-lg leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0"
             >
               {t("hero.subheadline")}
             </motion.p>
 
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-            >
-              <a
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+              <Link
                 href="#products"
-                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/25 hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 hover:-translate-y-0.5"
               >
                 {t("hero.cta")}
-                <ArrowRight size={18} />
-              </a>
-              <a
+                <ArrowRight size={16} />
+              </Link>
+              <Link
                 href="#collections"
-                style={{ backgroundColor: '#d946ef' }}
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl border border-white/20 transition-all duration-200 backdrop-blur-sm"
+                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 border border-white/10"
               >
-                Explore the Collection
-                <ChevronRight size={18} />
-              </a>
+                {t("hero.ctaSecondary")}
+              </Link>
             </motion.div>
           </motion.div>
 
-          {/* Right — hero product mosaic */}
+          {/* Right — floating product cards */}
           <motion.div
             variants={slideInRight}
             initial="hidden"
@@ -358,24 +385,24 @@ export default function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                className={`relative rounded-2xl overflow-hidden bg-slate-800 ${
-                  i === 0 ? "row-span-2" : ""
+                className={`bg-white/10 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden ${
+                  i === 1 ? "mt-8" : i === 3 ? "-mt-4" : ""
                 }`}
-                style={{ aspectRatio: i === 0 ? "3/4" : "1/1" }}
               >
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  className="w-full h-full object-cover opacity-90"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src =
-                      "https://placehold.co/400x400/1e293b/475569?text=Product";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent" />
-                <div className="absolute bottom-3 left-3">
-                  <p className="text-white text-xs font-semibold">{p.name}</p>
-                  <p className="text-slate-300 text-xs">${p.price}</p>
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        "https://placehold.co/400x400/1e293b/64748b?text=Product";
+                    }}
+                  />
+                </div>
+                <div className="p-3">
+                  <p className="text-white text-xs font-semibold truncate">{p.name}</p>
+                  <p className="text-indigo-300 text-xs">${p.price}</p>
                 </div>
               </motion.div>
             ))}
@@ -398,28 +425,52 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* ── Trust Badges ── */}
+      {/* ── Stats ── */}
       <section className="bg-white border-b border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          >
+            {stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={fadeInUp}
+                className="text-center"
+              >
+                <div className="text-3xl font-bold text-slate-900 mb-1">{stat.value}</div>
+                <div className="text-sm text-slate-500">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── Trust Features ── */}
+      <section className="bg-slate-50 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6"
           >
-            {trustBadges.map((b) => (
+            {trustFeatures.map((f) => (
               <motion.div
-                key={b.label}
+                key={f.title}
                 variants={fadeInUp}
                 className="flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-xl bg-indigo-50 flex items-center justify-center flex-shrink-0">
-                  <b.icon size={20} className="text-indigo-600" />
+                  <f.icon size={18} className="text-indigo-600" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-slate-900">{b.label}</p>
-                  <p className="text-xs text-slate-500">{b.sub}</p>
+                  <p className="text-sm font-semibold text-slate-900">{f.title}</p>
+                  <p className="text-xs text-slate-500">{f.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -428,7 +479,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Products ── */}
-      <section id="products" className="py-20 md:py-28 bg-[#FAFAF8]">
+      <section id="products" className="bg-white py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <motion.div
@@ -438,24 +489,24 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-12"
           >
-            <motion.p variants={fadeInUp} className="text-indigo-600 text-sm font-semibold tracking-widest uppercase mb-3">
-              Curated for You
+            <motion.p variants={fadeInUp} className="text-indigo-600 text-sm font-semibold tracking-wide uppercase mb-2">
+              {t("products.eyebrow")}
             </motion.p>
             <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-              {t("products.title")}
+              {t("products.heading")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-slate-500 text-lg max-w-xl mx-auto">
-              {t("products.subtitle")}
+              {t("products.subheading")}
             </motion.p>
           </motion.div>
 
-          {/* Category Tabs */}
+          {/* Category Filter */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="flex items-center justify-center gap-2 flex-wrap mb-10"
+            className="flex flex-wrap justify-center gap-2 mb-10"
           >
             {productCategories.map((cat) => (
               <button
@@ -464,7 +515,7 @@ export default function HomePage() {
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeCategory === cat
                     ? "bg-indigo-600 text-white shadow-md shadow-indigo-200"
-                    : "bg-white text-slate-600 hover:bg-slate-100 border border-slate-200"
+                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
                 }`}
               >
                 {cat}
@@ -478,10 +529,14 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"
           >
             {filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard
+                key={product.id}
+                product={product}
+                onAddToCart={handleAddToCart}
+              />
             ))}
           </motion.div>
 
@@ -495,17 +550,17 @@ export default function HomePage() {
           >
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2 border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200"
+              className="inline-flex items-center gap-2 border border-slate-200 hover:border-indigo-300 text-slate-700 hover:text-indigo-600 font-semibold px-8 py-3 rounded-xl transition-all duration-200 hover:bg-indigo-50"
             >
-              View All Products
-              <ArrowRight size={18} />
+              {t("products.viewAll")}
+              <ChevronRight size={16} />
             </Link>
           </motion.div>
         </div>
       </section>
 
       {/* ── Collections ── */}
-      <section id="collections" className="py-20 md:py-28 bg-white">
+      <section id="collections" className="bg-slate-50 py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={staggerContainer}
@@ -514,11 +569,11 @@ export default function HomePage() {
             viewport={{ once: true, margin: "-80px" }}
             className="text-center mb-12"
           >
-            <motion.p variants={fadeInUp} className="text-indigo-600 text-sm font-semibold tracking-widest uppercase mb-3">
-              Shop by Theme
+            <motion.p variants={fadeInUp} className="text-indigo-600 text-sm font-semibold tracking-wide uppercase mb-2">
+              {t("collections.eyebrow")}
             </motion.p>
             <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-slate-900">
-              {t("collections.title")}
+              {t("collections.heading")}
             </motion.h2>
           </motion.div>
 
@@ -527,32 +582,33 @@ export default function HomePage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-40px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid md:grid-cols-3 gap-6"
           >
             {collections.map((col) => (
               <motion.div
                 key={col.id}
                 variants={scaleIn}
                 className="group relative rounded-2xl overflow-hidden cursor-pointer"
-                style={{ aspectRatio: "4/5" }}
               >
-                <img
-                  src={col.image}
-                  alt={col.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).src =
-                      "https://placehold.co/400x500/f8fafc/94a3b8?text=Collection";
-                  }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={col.image}
+                    alt={col.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => {
+                      (e.currentTarget as HTMLImageElement).src =
+                        "https://placehold.co/800x600/f1f5f9/94a3b8?text=Collection";
+                    }}
+                  />
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-slate-300 text-xs mb-1">{col.count} pieces</p>
+                  <p className="text-white/70 text-xs mb-1">{col.count} products</p>
                   <h3 className="text-white text-xl font-bold mb-1">{col.title}</h3>
-                  <p className="text-slate-300 text-sm mb-4">{col.subtitle}</p>
-                  <span className="inline-flex items-center gap-1.5 text-white text-sm font-semibold group-hover:gap-3 transition-all duration-200">
-                    Shop Now <ArrowRight size={16} />
-                  </span>
+                  <p className="text-white/70 text-sm">{col.subtitle}</p>
+                  <div className="mt-3 inline-flex items-center gap-1 text-indigo-300 text-sm font-medium group-hover:gap-2 transition-all">
+                    {t("collections.explore")} <ArrowRight size={14} />
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -560,110 +616,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── About / Brand Story ── */}
-      <section id="about" className="py-20 md:py-28 bg-slate-900 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              variants={slideInLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-            >
-              <p className="text-indigo-400 text-sm font-semibold tracking-widest uppercase mb-4">
-                Our Story
-              </p>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                {t("about.title")}
-              </h2>
-              <p className="text-slate-400 text-lg leading-relaxed mb-6">
-                {t("about.body1")}
-              </p>
-              <p className="text-slate-400 leading-relaxed mb-8">
-                {t("about.body2")}
-              </p>
-              <div className="grid grid-cols-3 gap-6">
-                {[
-                  { num: "200+", label: "Curated Products" },
-                  { num: "50K+", label: "Happy Customers" },
-                  { num: "4.9★", label: "Average Rating" },
-                ].map((stat) => (
-                  <div key={stat.label}>
-                    <p className="text-3xl font-bold text-white mb-1">{stat.num}</p>
-                    <p className="text-slate-400 text-sm">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={slideInRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-80px" }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {products.slice(4, 8).map((p, i) => (
-                <div
-                  key={p.id}
-                  className={`relative rounded-2xl overflow-hidden ${
-                    i % 2 === 0 ? "mt-8" : ""
-                  }`}
-                  style={{ aspectRatio: "3/4" }}
-                >
-                  <img
-                    src={p.image}
-                    alt={p.name}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        "https://placehold.co/300x400/1e293b/475569?text=Product";
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 to-transparent" />
-                </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* ── Newsletter ── */}
-      <section id="newsletter" className="py-20 md:py-28 bg-gradient-to-br from-indigo-600 to-indigo-800 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-          <div className="absolute -bottom-32 -left-32 w-96 h-96 rounded-full bg-white/5 blur-3xl" />
-        </div>
-        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section id="newsletter" className="bg-indigo-600 py-20">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true }}
           >
-            <motion.div variants={fadeInUp} className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-6">
-              <Mail size={28} className="text-white" />
+            <motion.div variants={fadeInUp} className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 mb-6">
+              <Mail size={22} className="text-white" />
             </motion.div>
-            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl font-bold text-white mb-4">
-              {t("newsletter.title")}
+            <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold text-white mb-3">
+              {t("newsletter.heading")}
             </motion.h2>
             <motion.p variants={fadeInUp} className="text-indigo-200 text-lg mb-8">
-              {t("newsletter.subtitle")}
+              {t("newsletter.subheading")}
             </motion.p>
 
             {subscribed ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-white/20 rounded-2xl px-8 py-6 text-white font-semibold text-lg"
+                className="bg-white/10 border border-white/20 rounded-2xl px-8 py-6 text-white font-semibold text-lg"
               >
-                🎉 {t("newsletter.success")}
+                🎉 {t("newsletter.successMessage")}
               </motion.div>
             ) : (
               <motion.form
                 variants={fadeInUp}
                 onSubmit={handleSubscribe}
-                className="flex flex-col sm:flex-row gap-3"
+                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
               >
                 <input
                   type="email"
@@ -671,20 +655,16 @@ export default function HomePage() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={t("newsletter.placeholder")}
                   required
-                  className="flex-1 px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-white/40 backdrop-blur-sm"
+                  className="flex-1 px-5 py-3.5 rounded-xl bg-white/10 border border-white/20 text-white placeholder-indigo-300 focus:outline-none focus:ring-2 focus:ring-white/40 text-sm"
                 />
                 <button
                   type="submit"
-                  className="px-8 py-4 bg-white text-indigo-700 font-semibold rounded-xl hover:bg-indigo-50 transition-colors duration-200 whitespace-nowrap"
+                  className="bg-white text-indigo-600 font-semibold px-6 py-3.5 rounded-xl hover:bg-indigo-50 transition-colors duration-200 text-sm whitespace-nowrap"
                 >
                   {t("newsletter.cta")}
                 </button>
               </motion.form>
             )}
-
-            <motion.p variants={fadeInUp} className="text-indigo-300 text-sm mt-4">
-              {t("newsletter.disclaimer")}
-            </motion.p>
           </motion.div>
         </div>
       </section>
