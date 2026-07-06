@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "tagline": "Estilo Premium",
+    "home": "Inicio",
+    "shop": "Tienda",
+    "collections": "Colecciones",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "cart": "Carrito de compras",
+    "shopNow": "Comprar Ahora",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú"
+  },
+  "footer": {
+    "brandDescription": "Productos seleccionados para quienes aprecian la calidad, la artesanía y el diseño reflexivo en la vida cotidiana.",
+    "shop": "Tienda",
+    "newArrivals": "Nuevos Productos",
+    "bestSellers": "Más Vendidos",
+    "sale": "Ofertas",
+    "collections": "Colecciones",
+    "company": "Empresa",
+    "about": "Sobre Nosotros",
+    "careers": "Carreras",
+    "press": "Prensa",
+    "sustainability": "Sostenibilidad",
+    "support": "Soporte",
+    "contact": "Contáctenos",
+    "faq": "Preguntas Frecuentes",
+    "shipping": "Información de Envío",
+    "returns": "Devoluciones",
+    "copyright": "© {year} {brand}. Todos los derechos reservados.",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos de Servicio",
+    "cookies": "Política de Cookies"
+  },
+  "hero": {
+    "badge": "Nueva Colección 2025",
+    "title": "Diseñado para tu forma de vivir",
+    "subtitle": "Descubre productos premium elaborados con intención. Desde artículos esenciales para el hogar hasta accesorios personales, cada pieza está seleccionada por su calidad y estilo duradero.",
+    "cta": "Explorar la Colección",
+    "secondary": "Ver Lookbook",
+    "eyebrow": "Bienvenido a",
+    "headline1": "Descubre Qué Viene Después",
+    "headline2": "Diseñado Cuidadosamente. Elaborado Expertamente.",
+    "subtext": "Productos premium para tu forma de vivir."
+  },
+  "products": {
+    "title": "Nuestros Productos",
+    "subtitle": "Cuidadosamente seleccionado, bellamente hecho",
+    "addToCart": "Añadir al carrito",
+    "added": "Añadido",
+    "sale": "Oferta",
+    "new": "Nuevo",
+    "featured": "Destacado",
+    "reviews": "reseñas",
+    "filterAll": "Todos",
+    "filterHome": "Hogar",
+    "filterWellness": "Bienestar",
+    "filterAccessories": "Accesorios",
+    "filterApparel": "Ropa",
+    "eyebrow": "Destacado",
+    "heading": "Compra Nuevas Llegadas"
+  },
+  "collections": {
+    "title": "Compra por Colección",
+    "subtitle": "Explora nuestras categorías seleccionadas",
+    "explore": "Explorar",
+    "eyebrow": "Compra por Categoría",
+    "heading": "Explora Nuestras Colecciones"
+  },
+  "about": {
+    "title": "Hecho con propósito",
+    "subtitle": "Creemos que los objetos que te rodean moldean cómo te sientes. Por eso cada producto en nuestra tienda está seleccionado por su calidad, sostenibilidad e integridad de diseño.",
+    "stat1Value": "50K+",
+    "stat1Label": "Clientes felices",
+    "stat2Value": "200+",
+    "stat2Label": "Productos seleccionados",
+    "stat3Value": "4.9",
+    "stat3Label": "Calificación promedio",
+    "stat4Value": "98%",
+    "stat4Label": "Tasa de satisfacción",
+    "body1": "Seleccionamos los mejores productos de fabricantes confiables en todo el mundo, entregando calidad y estilo a tu puerta.",
+    "body2": "Cada artículo está seleccionado a mano por su artesanía, durabilidad y diseño, porque mereces algo mejor que lo ordinario.",
+    "eyebrow": "Nuestra Historia",
+    "heading": "Construido sobre Calidad, Impulsado por Ti"
+  },
+  "newsletter": {
+    "title": "Mantente informado",
+    "subtitle": "Obtén acceso anticipado a nuevas llegadas, ofertas exclusivas e inspiración de estilo entregadas en tu bandeja de entrada.",
+    "placeholder": "Tu dirección de correo electrónico",
+    "cta": "Suscribirse",
+    "disclaimer": "Sin spam, nunca. Desuscribirse en cualquier momento.",
+    "successTitle": "Estás en la lista.",
+    "successMessage": "Vigila tu bandeja de entrada para algo especial.",
+    "eyebrow": "Mantente Conectado",
+    "heading": "Obtén Ofertas Exclusivas Primero",
+    "subtext": "Únete a nuestra comunidad para acceso anticipado, consejos exclusivos y ofertas especiales."
+  },
+  "testimonials": {
+    "eyebrow": "Amado por Clientes",
+    "heading": "Mira Lo Que La Gente Está Diciendo"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "nav": {
+    "tagline": "Premium Lifestyle",
+    "home": "Home",
+    "shop": "Shop",
+    "collections": "Collections",
+    "about": "About",
+    "contact": "Contact",
+    "cart": "Shopping cart",
+    "shopNow": "Shop Now",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "brandDescription": "Curated products for those who appreciate quality, craftsmanship, and thoughtful design in everyday living.",
+    "shop": "Shop",
+    "newArrivals": "New Arrivals",
+    "bestSellers": "Best Sellers",
+    "sale": "Sale",
+    "collections": "Collections",
+    "company": "Company",
+    "about": "About Us",
+    "careers": "Careers",
+    "press": "Press",
+    "sustainability": "Sustainability",
+    "support": "Support",
+    "contact": "Contact Us",
+    "faq": "FAQ",
+    "shipping": "Shipping Info",
+    "returns": "Returns",
+    "copyright": "© {year} {brand}. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "cookies": "Cookie Policy"
+  },
+  "hero": {
+    "badge": "New Collection 2025",
+    "title": "Designed for the way you live",
+    "subtitle": "Discover premium products crafted with intention. From home essentials to personal accessories, every piece is chosen for quality and lasting style.",
+    "cta": "Explore the Collection",
+    "secondary": "View Lookbook",
+    "eyebrow": "Welcome to",
+    "headline1": "Discover What's Next",
+    "headline2": "Thoughtfully Designed. Expertly Crafted.",
+    "subtext": "Premium products for the way you live."
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Thoughtfully curated, beautifully made",
+    "addToCart": "Add to Cart",
+    "added": "Added",
+    "sale": "Sale",
+    "new": "New",
+    "featured": "Featured",
+    "reviews": "reviews",
+    "filterAll": "All",
+    "filterHome": "Home",
+    "filterWellness": "Wellness",
+    "filterAccessories": "Accessories",
+    "filterApparel": "Apparel",
+    "eyebrow": "Featured",
+    "heading": "Shop New Arrivals"
+  },
+  "collections": {
+    "title": "Shop by Collection",
+    "subtitle": "Explore our curated categories",
+    "explore": "Explore",
+    "eyebrow": "Shop by Category",
+    "heading": "Explore Our Collections"
+  },
+  "about": {
+    "title": "Crafted with purpose",
+    "subtitle": "We believe the objects around you shape how you feel. That is why every product in our store is selected for its quality, sustainability, and design integrity.",
+    "stat1Value": "50K+",
+    "stat1Label": "Happy customers",
+    "stat2Value": "200+",
+    "stat2Label": "Curated products",
+    "stat3Value": "4.9",
+    "stat3Label": "Average rating",
+    "stat4Value": "98%",
+    "stat4Label": "Satisfaction rate",
+    "body1": "We curate the finest products from trusted makers worldwide, delivering quality and style to your doorstep.",
+    "body2": "Every item is hand-selected for craftsmanship, durability, and design—because you deserve better than ordinary.",
+    "eyebrow": "Our Story",
+    "heading": "Built on Quality, Driven by You"
+  },
+  "newsletter": {
+    "title": "Stay in the loop",
+    "subtitle": "Get early access to new arrivals, exclusive offers, and style inspiration delivered to your inbox.",
+    "placeholder": "Your email address",
+    "cta": "Subscribe",
+    "disclaimer": "No spam, ever. Unsubscribe at any time.",
+    "successTitle": "You are on the list.",
+    "successMessage": "Watch your inbox for something special.",
+    "eyebrow": "Stay Connected",
+    "heading": "Get Exclusive Offers First",
+    "subtext": "Join our community for early access, insider tips, and special deals."
+  },
+  "testimonials": {
+    "eyebrow": "Loved by Customers",
+    "heading": "See What People Are Saying"
+  }
+}
