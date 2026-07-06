@@ -146,7 +146,7 @@ const features = [
   {
     icon: Truck,
     title: "Free Shipping",
-    description: "On all orders over $75. Fast, reliable delivery to your door.",
+    description: "Discount on all order",
   },
   {
     icon: ShieldCheck,
