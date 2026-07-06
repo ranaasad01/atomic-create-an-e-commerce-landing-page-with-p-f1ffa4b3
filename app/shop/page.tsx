@@ -6,7 +6,7 @@ export default function ShopPage() {
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Shop
           </h1>
-          <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto" style={{ color: "#f59e0b" }} >
             chnaged text
           </p>
         </div>
